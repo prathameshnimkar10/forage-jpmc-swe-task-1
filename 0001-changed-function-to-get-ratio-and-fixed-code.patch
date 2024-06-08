@@ -1,0 +1,34 @@
+From 97a0105edc36271f4ac3debf598734a1de1ddcc3 Mon Sep 17 00:00:00 2001
+From: Prathamesh Nimkar <zekhram007@gmail.com>
+Date: Thu, 6 Jun 2024 19:41:09 +0530
+Subject: [PATCH] changed function to get ratio and fixed code
+
+---
+ client3.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..89ff25c 100644
+--- a/client3.py
++++ b/client3.py
+@@ -35,13 +35,16 @@ def getDataPoint(quote):
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = (bid_price + ask_price) / 2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
++    if price_b == 0:
++        return
++    return (price_a / price_b)
+     return 1
+ 
+ 
+-- 
+2.45.2.windows.1
+
